@@ -16,7 +16,7 @@ public class JavaSelenium {
 		driver1.get("https://www.google.com");
 		System.out.println(driver1.getTitle());
 		System.out.println(driver1.getCurrentUrl());
-		driver1.quit();
+		driver1.quit(); // Quit browser
 		
 	}
 
