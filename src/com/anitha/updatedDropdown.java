@@ -3,6 +3,7 @@ package com.anitha;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class updatedDropdown {
 
@@ -24,6 +25,9 @@ public class updatedDropdown {
 		{
 			driver.findElement(By.id("hrefIncAdt")).click();	
 		}
+		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
+		driver.findElement(By.id("btnclosepaxoption")).click();
+		Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "5 Adult");
 		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
 	}
 
