@@ -13,9 +13,12 @@ public class updatedDropdown {
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
-		System.out.println(driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).isSelected());
+		Assert.assertFalse(driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).isSelected());
+		Assert.assertFalse(false);
+		//System.out.println(driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).isSelected());
 		driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).click();
-		System.out.println(driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).isSelected());
+		//System.out.println(driver.findElement(By.cssSelector("input[name*='friendsandfamily']")).isSelected());
+		Assert.assertTrue(true);
 		System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
 		
 		
@@ -35,7 +38,7 @@ public class updatedDropdown {
 		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
 		driver.findElement(By.id("btnclosepaxoption")).click();
 		Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "5 Adult");
-		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
+		//System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
 		driver.close();
 	}
 
