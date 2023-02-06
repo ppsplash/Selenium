@@ -22,19 +22,14 @@ public class StaticDropdown {
 		dropdown.selectByValue("INR");
 		System.out.println(dropdown.getFirstSelectedOption().getText());
 		System.out.println(driver.findElement(By.name("ctl00$mainContent$view_date2")).isEnabled());
-		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		WebElement findElement = driver.findElement(By.id("Div1"));
+		String attribute = findElement.getAttribute("style");
+		System.out.println(attribute);
 		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
-		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
-		if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"))
-		{
-			System.out.println("IS ENABLED");
-			Assert.assertTrue(true);
-		}
-		else
-		{
-			System.out.println("IS DISABLED");
-			Assert.assertTrue(false);
-	}
+		 attribute = findElement.getAttribute("style");
+		System.out.println(attribute);
+		Assert.assertTrue(   attribute.contains("1"));
+		
 
 }
 }
