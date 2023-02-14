@@ -13,6 +13,14 @@ public class base {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(5, null);
+		addItems(driver);
+		
+			
+}
+	
+	private static void addItems(WebDriver driver) throws InterruptedException 
+	{
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
 		Thread.sleep(5000);
 		String[] itemsNeeded = {"Tomato","Beans","Capsicum"};
@@ -41,4 +49,4 @@ public class base {
 		
 	}
 
-}
+	}
