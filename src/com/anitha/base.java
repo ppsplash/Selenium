@@ -1,5 +1,6 @@
 package com.anitha;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,22 +8,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class base {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(5, null);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		WebDriverWait w=new WebDriverWait(driver,Duration.ofSeconds(10));
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+		Thread.sleep(5000);
 		addItems(driver);
-		
+		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+		driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("Anitha");
+		driver.findElement(By.cssSelector("button.promoBtn")).click();
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.promoBtn")));
+		System.out.println(driver.findElement(By.cssSelector("button.promoBtn")).getText());
+		driver.quit();
 			
 }
 	
 	private static void addItems(WebDriver driver) throws InterruptedException 
 	{
-		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
-		Thread.sleep(5000);
 		String[] itemsNeeded = {"Tomato","Beans","Capsicum"};
 //		
 		List<WebElement> vegName=driver.findElements(By.cssSelector("h4.product-name"));
@@ -43,9 +53,8 @@ public class base {
 		}
 		}
 		
-		driver.quit();
 		
-		
+				
 		
 	}
 
