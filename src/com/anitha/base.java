@@ -25,8 +25,8 @@ public class base {
 		driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
 		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("Anitha");
 		driver.findElement(By.cssSelector("button.promoBtn")).click();
-		w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.promoBtn")));
-		System.out.println(driver.findElement(By.cssSelector("button.promoBtn")).getText());
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.promoInfo")));
+		System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
 		driver.quit();
 			
 }
