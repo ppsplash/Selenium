@@ -28,7 +28,7 @@ public class StaticDropdown {
 		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
 		 attribute = findElement.getAttribute("style");
 		System.out.println(attribute);
-		Assert.assertTrue(   attribute.contains("1"));
+		Assert.assertTrue(attribute.contains("1"));
 		
 
 }
