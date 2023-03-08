@@ -17,11 +17,11 @@ public class Assignment4 {
 		driver.findElement(By.linkText("Multiple Windows")).click();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.findElement(By.linkText("Click Here")).click();
 		Set<String> Windows= driver.getWindowHandles();
 		Iterator<String> IT = Windows.iterator();
 		String Parent = IT.next();
 		String Child = IT.next();
-		driver.findElement(By.linkText("Click Here")).click();
 		driver.switchTo().window(Child);
 		System.out.println(driver.findElement(By.tagName("h3")).getText());
 		driver.switchTo().window(Parent);
