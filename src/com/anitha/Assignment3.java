@@ -1,12 +1,16 @@
 package com.anitha;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Assignment3 {
 
@@ -27,7 +31,18 @@ public class Assignment3 {
 		dropdown.selectByVisibleText("Consultant");
 		driver.findElement(By.id("terms")).click();
 		driver.findElement(By.name("signin")).click();
+		WebDriverWait w= new WebDriverWait(driver,Duration.ofSeconds(15));
+		//w.until(ExpectedConditions.alertIsPresent());
+		//driver.switchTo().alert().accept();
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Checkout")));
+		List<WebElement> phone = driver.findElements(By.cssSelector("button[class='btn btn-info']"));
+		for (int i = 0; i<phone.size();i++)
+		{
+			phone.get(i).click();
+		}
+		driver.findElement(By.cssSelector("*[class='nav-link btn btn-primary']")).click();
 		
+			
 	}
 
 }
