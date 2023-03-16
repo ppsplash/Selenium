@@ -35,7 +35,7 @@ public class FooterAndTabs {
 		while(it.hasNext())
 		{
 			driver.switchTo().window(it.next());
-			System.out.println(driver.getCurrentUrl());
+			System.out.println(driver.getTitle());
 		}
 		driver.quit();
 		
