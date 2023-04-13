@@ -17,31 +17,27 @@ public class Calendar {
 		// TODO Auto-generated method stub
 		
 		WebDriver driver =  new ChromeDriver();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		driver.get("https://www.path2usa.com/travel-companion/");
-		driver.manage().window().fullscreen();
+		driver.get("https://global.flixbus.com/");
+		driver.findElement(By.cssSelector("button[data-testid='uc-accept-all-button']")).click();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		js.executeScript("window.scrollBy(0,800)");
-		driver.findElement(By.cssSelector("input[name='form_fields[travel_comp_date]']")).click();
-		WebElement month =driver.findElement(By.cssSelector("div[class='flatpickr-current-month']"));
+		
+		driver.findElement(By.id("dateInput-from")).click();
+		WebElement month =driver.findElement(By.xpath("//caption/h3[@class='hcr-h3-5-7-1 hcr-h3--section-header-5-7-1 hcr-clndr__title-5-7-1']"));
 		while(!month.getText().equalsIgnoreCase("May"))
 		{
-			driver.findElement(By.xpath("//div/span[@class='flatpickr-next-month']")).click();
-			
+			driver.findElement(By.xpath("//button[@aria-label='Show next month']")).click();			
 		}
-		List<WebElement> dates = driver.findElements(By.cssSelector("//div/span[@class='flatpickr-day ']"));
+		List<WebElement> dates = driver.findElements(By.xpath("//tr/td/button[@class='hcr-clndr__btn-5-7-1']"));
 		int count= dates.size();
 		for(int i = 0;i<count;i++)
 		{
 			String no = dates.get(i).getText();
-			if(no.equalsIgnoreCase("25"))
+			if(no.equalsIgnoreCase("28"))
 			{
 				dates.get(i).click();
 				break;	
 			}
-					
 		}
-		System.out.println(driver.findElement(By.xpath("//*[@id='form-field-travel_comp_date']")).getAttribute("value"));	
 	}
-
 }
